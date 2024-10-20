@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 16px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: 0; /* Enlève la bordure */
+  outline: none; /* Enlève le contour par défaut */
+  background: transparent; /* Arrière-plan transparent */
+}
+
+header {
+  background-color: #333333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 3em; */
+}
+
+h1 {
+  font-family: "Nosifer", cursive;
+  font-size: 5rem;
+  margin: 0;
+  padding: 0.5em;
+}
+
+.palette {
+  height: 4em;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.color-input {
+  cursor: pointer;
+  border: none;
+  /* height: 100%;
+  width: 100%; */
+  padding: 0;
+  margin: 0;
+  outline: none;
+  appearance: none; /* Supprime les styles par défaut du navigateur */
+
+  background: transparent;
+  -webkit-appearance: none; /* Réinitialise l'apparence sur WebKit (Chrome, Safari) */
+  -moz-appearance: none; /* Réinitialise l'apparence sur Firefox */
+}
+
+main {
+  flex-grow: 1;
+  background-color: rgb(39, 48, 45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.board-container {
+  display: grid;
+  background-color: rgb(255, 255, 255);
+  width: 30%;
+  aspect-ratio: 1;
+  border: 1px solid black;
+}
+
+.board-boxes {
+  background-color: lightgray;
+  border: 1px dotted #555555;
+  aspect-ratio: 1;
+}
+
+@media (max-width: 768px) {
+  .board-container {
+    width: 85%; /* Par exemple, occuper plus d'espace sur les petits écrans */
+  }
+}
