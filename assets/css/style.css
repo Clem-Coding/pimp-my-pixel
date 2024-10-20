@@ -23,7 +23,6 @@ input {
 }
 
 header {
-  background-color: #333333;
   color: white;
   display: flex;
   justify-content: center;
@@ -33,7 +32,7 @@ header {
 
 h1 {
   font-family: "Nosifer", cursive;
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 0;
   padding: 0.5em;
 }
@@ -43,6 +42,7 @@ h1 {
   color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.5em;
 }
 
@@ -54,7 +54,7 @@ h1 {
   padding: 0;
   margin: 0;
   outline: none;
-  appearance: none; /* Supprime les styles par défaut du navigateur */
+  appearance: none; /* Supprime les styles par défaut du navigateur , marche pas*/
 
   background: transparent;
   -webkit-appearance: none; /* Réinitialise l'apparence sur WebKit (Chrome, Safari) */
@@ -63,20 +63,27 @@ h1 {
 
 main {
   flex-grow: 1;
-  background-color: rgb(39, 48, 45);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1em;
 }
 
 .board-container {
   display: grid;
   background-color: rgb(255, 255, 255);
-  width: 30%;
+  width: 45%;
   aspect-ratio: 1;
   border: 1px solid black;
+  margin-bottom: 2em;
+  margin-left: auto; /* Pousse cet élément vers la droite */
+  margin-right: auto;
+}
+
+.container {
+  display: flex;
+  padding: 3em;
+
+  align-items: flex-start;
+  width: 100%; 
+  height: 100%;
+  max-width: 1200px; /* Limite la largeur sur des grands écrans */
 }
 
 .board-boxes {
@@ -85,8 +92,103 @@ main {
   aspect-ratio: 1;
 }
 
+.buttons-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1em;
+  margin-top: 2em;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  margin-left: 5em;
+}
+.label-select-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+}
+
+.buttons-section label {
+  font-size: 1.6rem;
+}
+
+.buttons-section select {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: none;
+  background-color: #444;
+  color: white;
+  font-size: 1.6rem;
+  width: 7em;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  padding: 0.5em 1.5em;
+  border: none;
+  border-radius: 0.2em;
+  font-size: 1.6rem;
+  color: white;
+  background-color: #444;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ajoute une ombre pour la profondeur */
+}
+
+button:hover {
+  background-color: #555; 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Ombre plus forte au survol */
+}
+
+button:active {
+  transform: translateY(2px); /* Simule un enfoncement du bouton */
+}
+
+.clear-btn:hover {
+  background-color: rgb(108, 1, 1);
+}
+
 @media (max-width: 768px) {
   .board-container {
-    width: 85%; /* Par exemple, occuper plus d'espace sur les petits écrans */
+    width: 88%; /* Par exemple, occuper plus d'espace sur les petits écrans */
   }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .palette {
+    flex-wrap: wrap;
+  }
+
+  .color-input {
+    /* width: 50%; à ajuster pour garantir 2 éléments par rangée */
+    width: 2em; /* Gardez la largeur maximale */
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .buttons-section {
+    /* align-items: center;
+    justify-content: center; */
+  }
+
+  button {
+    font-size: 1.2rem;
+  }
+
+  .buttons-section label {
+    font-size: 1.2rem;
+  }
+
+  .buttons-section select {
+    font-size: 1.2rem;
+
+  }'
 }

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Projet Paint</title>
+    <title>Pimp My Pixel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,6 +13,12 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link href="./assets/css/style.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./assets/favicon.png" type="image/x-icon" />
@@ -20,7 +26,7 @@
 
   <body>
     <header>
-      <h1>Pimp My Pixel!</h1>
+      <h1>Pimp My Pixel !</h1>
     </header>
     <div class="palette">
       <input type="color" value="#22f6f3" class="color-input" />
@@ -41,20 +47,28 @@
       <input type="color" value="#ff6347" class="color-input" />
     </div>
     <main>
-      <div class="board-container"></div>
-      <div class="buttons-section">
-        <label for="grid-size">Choisir la taille de la grille :</label>
-        <select id="grid-size">
-          <option value="10">10x10</option>
-          <option value="20">20x20</option>
-          <option value="40">40x40</option>
-          <option value="80">80x80</option>
-        </select>
-        <button class="js-generate-grid">Générer la grille</button>
+      <div class="container">
+        <div class="buttons-section">
+          <div class="label-select-group">
+            <label for="grid-size">Choisir la taille de la grille :</label>
+            <select id="grid-size">
+              <option value="10">10x10</option>
+              <option value="20">20x20</option>
+              <option value="40">40x40</option>
+              <option value="80">80x80</option>
+            </select>
+          </div>
+          <button class="generate-grid-btn js-generate-grid">
+            Générer la grille
+          </button>
+          <button class="clear-btn">Clear</button>
+        </div>
+        <div class="board-container">
+          <!-- Ton board ici -->
+        </div>
       </div>
-
-      <button class="clear-btn">Clear</button>
     </main>
+
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
