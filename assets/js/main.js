@@ -39,12 +39,32 @@ function generateGrid(gridSize = 10) {
 }
 
 // ____________________ Fonctions Local Storage _______________________________
+
+//chargement d'une couleur par défaut dans le local storage
+function loadDefaultColor() {
+  if (!getSelectedColor()) {
+    const defaultColor = "#000000";
+    sessionStorage.setItem("selectedColor", defaultColor);
+  }
+}
+
 function selectColor(event) {
   let colorPalette = event.target;
+  console.log("colorPalette", colorPalette);
 
-  let selectedColor = colorPalette.value;
+  let selectedColor = colorPalette.value; // Récupère la valeur sélectionnée
   console.log("selected color", selectedColor);
   sessionStorage.setItem("selectedColor", selectedColor); // Stocke la couleur dans sessionStorage
+
+  // Applique immédiatement la couleur si la souris est enfoncée
+  if (MouseDown && brushSelected) {
+    const boardBoxes = document.querySelectorAll(".board-boxes");
+    boardBoxes.forEach((box) => {
+      box.addEventListener("mouseover", function () {
+        box.style.backgroundColor = selectedColor;
+      });
+    });
+  }
 }
 
 function getSelectedColor() {
@@ -111,14 +131,21 @@ function clearPaintBoard() {
 /**************************************************************/
 
 window.addEventListener("DOMContentLoaded", function () {
-  generateGrid(); // affiche la grille par défaut
+  loadDefaultColor();
+  generateGrid(); // affiche la grille par défaut (x10)
+
+  // Active le pinceau par défaut lors du chargement de la page
+  brushSelected = true;
+  brushBtn.classList.add("active");
+  colorOnCells();
+
   generateGridBtn.addEventListener("click", () => {
     generateGrid();
     colorOnCells();
   });
 
   colorPickers.forEach((input) => {
-    input.addEventListener("input", selectColor);
+    input.addEventListener("click", selectColor);
   });
 
   document.addEventListener("mousedown", function () {
