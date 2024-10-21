@@ -27,7 +27,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 3em; */
 }
 
 h1 {
@@ -57,8 +56,8 @@ h1 {
   appearance: none; /* Supprime les styles par défaut du navigateur , marche pas*/
 
   background: transparent;
-  -webkit-appearance: none; /* Réinitialise l'apparence sur WebKit (Chrome, Safari) */
-  -moz-appearance: none; /* Réinitialise l'apparence sur Firefox */
+  -webkit-appearance: none; /* Réinitialise l'apparence sur WebKit (Chrome, Safari)  marche pas*/
+  -moz-appearance: none; /* Réinitialise l'apparence sur Firefox marche pas */
 }
 
 main {
@@ -72,16 +71,15 @@ main {
   aspect-ratio: 1;
   border: 1px solid black;
   margin-bottom: 2em;
-  margin-left: auto; /* Pousse cet élément vers la droite */
+  margin-left: auto;
   margin-right: auto;
 }
 
 .container {
   display: flex;
   padding: 3em;
-
   align-items: flex-start;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   max-width: 1200px; /* Limite la largeur sur des grands écrans */
 }
@@ -92,41 +90,19 @@ main {
   aspect-ratio: 1;
 }
 
-.buttons-section {
+.btn-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 1em;
-  margin-top: 2em;
-  color: white;
-  font-family: "Roboto", sans-serif;
-  margin-left: 5em;
-}
-.label-select-group {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 0.7em;
+  align-items: flex-end;
+  gap: 2em;
 }
 
-.buttons-section label {
-  font-size: 1.6rem;
-}
-
-.buttons-section select {
-  padding: 0.5em;
-  border-radius: 0.2em;
-  border: none;
-  background-color: #444;
-  color: white;
-  font-size: 1.6rem;
-  width: 7em;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
+/* stylisation générale des boutons */
 
 button {
   padding: 0.5em 1.5em;
+  width: auto;
   border: none;
   border-radius: 0.2em;
   font-size: 1.6rem;
@@ -138,7 +114,7 @@ button {
 }
 
 button:hover {
-  background-color: #555; 
+  background-color: #555;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Ombre plus forte au survol */
 }
 
@@ -146,10 +122,81 @@ button:active {
   transform: translateY(2px); /* Simule un enfoncement du bouton */
 }
 
-.clear-btn:hover {
-  background-color: rgb(108, 1, 1);
+/*________boutons de la section paint________ */
+.paint-buttons-section {
+  display: flex;
+  gap: 2em;
 }
 
+.brush-btn,
+.eraser-btn {
+  padding: 0;
+}
+.brush-btn img,
+.eraser-btn img {
+  width: 3em;
+  height: 3em;
+
+  /* Pour garantir que l'image garde ses proportions à l'intérieur du carré */
+  object-fit: cover;
+}
+
+/*________boutons grid__________ */
+
+.grid-select-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7em;
+
+  gap: 1em;
+  margin-top: 2em;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  margin-left: 5em;
+}
+
+.grid-select-group label {
+  font-size: 1.6rem;
+}
+
+.grid-select-group select {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: none;
+  background-color: #444;
+  color: white;
+  font-size: 1.6rem;
+  width: 7em;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* bouton clear */
+.clear-btn:hover {
+  background-color: rgb(156, 3, 3);
+}
+.glitch-btn {
+  height: auto; /* Ou une valeur fixe si nécessaire */
+  flex: none;
+}
+
+/* classes actives des boutons */
+
+.glitch-btn.active {
+  border: 3px solid #ffff00;
+}
+
+.eraser-btn.active {
+  border: 3px solid #ffff00;
+}
+
+.brush-btn.active {
+  border: 3px solid #ffff00;
+}
+
+/* _______________ Média queries, à continuer __________________________ */
 @media (max-width: 768px) {
   .board-container {
     width: 88%; /* Par exemple, occuper plus d'espace sur les petits écrans */
@@ -174,11 +221,6 @@ button:active {
     padding: 0;
   }
 
-  .buttons-section {
-    /* align-items: center;
-    justify-content: center; */
-  }
-
   button {
     font-size: 1.2rem;
   }
@@ -189,6 +231,72 @@ button:active {
 
   .buttons-section select {
     font-size: 1.2rem;
+  }
+}
 
-  }'
+/* effet glitch */
+
+.glitch {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  animation: glitch-animation 0.5s infinite;
+  background-color: #000; /* Couleur de fond par défaut */
+}
+
+/* Animation glitch */
+@keyframes glitch-animation {
+  0% {
+    transform: translate(0);
+    clip-path: inset(0);
+    opacity: 1;
+    background-color: #000;
+  }
+  10% {
+    transform: translate(-1px, -5px);
+    clip-path: inset(10% 0 20% 0);
+    opacity: 0.9;
+    background-color: #ff00c1;
+  }
+  20% {
+    transform: translate(3px, 3px);
+    clip-path: inset(20% 0 10% 0);
+    opacity: 0.5;
+    background-color: #00ffff;
+  }
+  30% {
+    transform: translate(-3px, -4px);
+    clip-path: inset(0 0 20% 0);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(2px, 4px);
+    clip-path: inset(10% 0 0 0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(0, 0);
+    clip-path: inset(0);
+    opacity: 0.1;
+  }
+  60% {
+    transform: translate(3px, -2px);
+    clip-path: inset(0 0 20% 0);
+    opacity: 0.9;
+  }
+  70% {
+    transform: translate(-2px, 3px);
+    clip-path: inset(10% 0 0 0);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translate(2px, 2px);
+    clip-path: inset(0 0 20% 0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(0);
+    clip-path: inset(0);
+    opacity: 1;
+  }
 }
