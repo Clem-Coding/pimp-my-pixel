@@ -17,9 +17,9 @@ body {
 }
 
 input {
-  border: 0; /* Enlève la bordure */
-  outline: none; /* Enlève le contour par défaut */
-  background: transparent; /* Arrière-plan transparent */
+  border: 0;
+  outline: none;
+  background: transparent;
 }
 
 header {
@@ -37,7 +37,7 @@ h1 {
 }
 
 .palette {
-  height: 4em;
+  height: 5em;
   color: white;
   display: flex;
   justify-content: center;
@@ -48,8 +48,7 @@ h1 {
 .color-input {
   cursor: pointer;
   border: none;
-  /* height: 100%;
-  width: 100%; */
+
   padding: 0;
   margin: 0;
   outline: none;
@@ -64,24 +63,22 @@ main {
   flex-grow: 1;
 }
 
-.board-container {
-  display: grid;
-  background-color: rgb(255, 255, 255);
-  width: 45%;
-  aspect-ratio: 1;
-  border: 1px solid black;
-  margin-bottom: 2em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .container {
   display: flex;
   padding: 3em;
-  align-items: flex-start;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
-  max-width: 1200px; /* Limite la largeur sur des grands écrans */
+}
+
+.board-container {
+  display: grid;
+  background-color: rgb(255, 255, 255);
+  width: 40%;
+  aspect-ratio: 1;
+  border: 1px solid black;
+  margin-bottom: 2em;
+  margin-right: 25%;
 }
 
 .board-boxes {
@@ -93,9 +90,9 @@ main {
 .btn-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-end;
-  gap: 2em;
+  gap: 1.5em;
+  margin-right: 2.5em;
 }
 
 /* stylisation générale des boutons */
@@ -125,7 +122,7 @@ button:active {
 /*________boutons de la section paint________ */
 .paint-buttons-section {
   display: flex;
-  gap: 2em;
+  gap: 1.5em;
 }
 
 .brush-btn,
@@ -145,16 +142,11 @@ button:active {
 
 .grid-select-group {
   display: flex;
-  align-items: center;
   justify-content: center;
   align-items: center;
-  gap: 0.7em;
-
   gap: 1em;
-  margin-top: 2em;
   color: white;
   font-family: "Roboto", sans-serif;
-  margin-left: 5em;
 }
 
 .grid-select-group label {
@@ -178,7 +170,7 @@ button:active {
   background-color: rgb(156, 3, 3);
 }
 .glitch-btn {
-  height: auto; /* Ou une valeur fixe si nécessaire */
+  height: auto;
   flex: none;
 }
 
@@ -211,8 +203,7 @@ button:active {
   }
 
   .color-input {
-    /* width: 50%; à ajuster pour garantir 2 éléments par rangée */
-    width: 2em; /* Gardez la largeur maximale */
+    width: 2em;
   }
 
   .container {
@@ -234,14 +225,14 @@ button:active {
   }
 }
 
-/* effet glitch */
+/*________________effet glitch___________________________ */
 
 .glitch {
   color: white;
   font-size: 20px;
   text-align: center;
   animation: glitch-animation 0.5s infinite;
-  background-color: #000; /* Couleur de fond par défaut */
+  background-color: #000;
 }
 
 /* Animation glitch */
