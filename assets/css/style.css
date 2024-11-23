@@ -133,7 +133,9 @@ button:active {
 }
 
 /*________boutons grid__________ */
-
+select {
+  z-index: 10;
+}
 .grid-select-group {
   display: flex;
   justify-content: center;

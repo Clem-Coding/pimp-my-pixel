@@ -1,5 +1,5 @@
 /**************************************************************/
-/*                         Données                         */
+/*                         DATA                               */
 /**************************************************************/
 let palette = document.querySelector(".palette");
 let board = document.querySelector(".board-container");
@@ -15,13 +15,14 @@ let eraserSelected = false;
 let brushSelected = false;
 
 /**************************************************************/
-/*                         Fonctions                            */
+/*                       FUNCTIONS                            */
 /**************************************************************/
 
-// ________________Fonction pour générer les cases du paintboard________________________
+// ________________Generate Grid________________________
 
 function generateGrid(gridSize = 10) {
   gridSize = parseInt(document.getElementById("grid-size").value);
+
   const totalBoxes = gridSize * gridSize;
   board.innerHTML = "";
 
@@ -34,7 +35,7 @@ function generateGrid(gridSize = 10) {
   }
 }
 
-// ____________________ Fonctions Local Storage _______________________________
+// ____________________ Local Storage _______________________________
 
 function loadDefaultColor() {
   if (!getSelectedColor()) {
@@ -52,9 +53,7 @@ function selectColor(event) {
   if (MouseDown && brushSelected) {
     const boardBoxes = document.querySelectorAll(".board-boxes");
     boardBoxes.forEach((box) => {
-      box.addEventListener("mouseover", function () {
-        box.style.backgroundColor = selectedColor;
-      });
+      box.style.backgroundColor = selectedColor;
     });
   }
 }
@@ -66,49 +65,54 @@ function getSelectedColor() {
   return null;
 }
 
-//___________ Fonctions pour le pinceau________________
+//___________ Brush functions________________
 
 function colorOnCells() {
   const boardBoxes = document.querySelectorAll(".board-boxes");
-
   if (brushSelected) {
     boardBoxes.forEach((box) => {
-      box.removeEventListener("mouseover", deleteColorOnCells);
-      box.addEventListener("mouseover", loadSelectedColor);
+      box.addEventListener("mousemove", (event) => {
+        if (MouseDown) {
+          loadSelectedColor(event);
+        }
+      });
+
+      box.addEventListener("click", (event) => {
+        loadSelectedColor(event);
+      });
     });
   }
 }
 
 function loadSelectedColor(event) {
-  let cellMain = event.target;
+  let mainCell = event.target;
   let selectedColor = getSelectedColor();
-
-  if (MouseDown) {
-    cellMain.style.backgroundColor = selectedColor;
-  }
+  mainCell.style.backgroundColor = selectedColor;
 }
 
-// ________ Fonctions pour la gomme ______________
-function deleteColorOnCells(event) {
-  let cellMain = event.target;
-
-  if (MouseDown) {
-    cellMain.style.backgroundColor = "";
-  }
-}
+// ________ Eraser functions   ______________
 
 function erasePaint() {
   const boardBoxes = document.querySelectorAll(".board-boxes");
 
   if (eraserSelected) {
     boardBoxes.forEach((box) => {
-      box.removeEventListener("mouseover", loadSelectedColor);
-      box.addEventListener("mouseover", deleteColorOnCells);
+      box.addEventListener("mousemove", (event) => {
+        if (MouseDown) {
+          deleteColorOnCells(event);
+        }
+      });
+      box.addEventListener("click", deleteColorOnCells);
     });
   }
 }
 
-//_________ Fonction pour clear le board_______________________
+function deleteColorOnCells(event) {
+  let mainCell = event.target;
+  mainCell.style.backgroundColor = "";
+}
+
+//_________ _______________________
 
 function clearPaintBoard() {
   const boardBoxes = document.querySelectorAll(".board-boxes");
@@ -125,6 +129,17 @@ window.addEventListener("DOMContentLoaded", function () {
   loadDefaultColor();
   generateGrid();
 
+  document.addEventListener("mousedown", function (event) {
+    if (event.target.closest("select")) return;
+    event.preventDefault();
+    MouseDown = true;
+  });
+
+  document.addEventListener("mouseup", function (event) {
+    event.preventDefault();
+    MouseDown = false;
+  });
+
   brushSelected = true;
   brushBtn.classList.add("active");
   colorOnCells();
@@ -139,14 +154,6 @@ window.addEventListener("DOMContentLoaded", function () {
     input.addEventListener("click", selectColor);
   });
 
-  document.addEventListener("mousedown", function () {
-    MouseDown = true;
-  });
-
-  document.addEventListener("mouseup", function () {
-    MouseDown = false;
-  });
-
   eraserBtn.addEventListener("click", () => {
     eraserBtn.classList.toggle("active");
     brushBtn.classList.remove("active");
@@ -155,7 +162,7 @@ window.addEventListener("DOMContentLoaded", function () {
     erasePaint();
   });
 
-  brushBtn.addEventListener("mousedown", () => {
+  brushBtn.addEventListener("click", () => {
     brushBtn.classList.toggle("active");
     eraserBtn.classList.remove("active");
     brushSelected = true;
