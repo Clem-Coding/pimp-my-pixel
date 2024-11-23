@@ -71,6 +71,9 @@ function colorOnCells() {
   const boardBoxes = document.querySelectorAll(".board-boxes");
   if (brushSelected) {
     boardBoxes.forEach((box) => {
+      box.removeEventListener("mousmove", deleteColorOnCells);
+      box.removeEventListener("click", deleteColorOnCells);
+
       box.addEventListener("mousemove", (event) => {
         if (MouseDown) {
           loadSelectedColor(event);
@@ -97,6 +100,9 @@ function erasePaint() {
 
   if (eraserSelected) {
     boardBoxes.forEach((box) => {
+      box.removeEventListener("mousemove", loadSelectedColor);
+      box.removeEventListener("click", loadSelectedColor);
+
       box.addEventListener("mousemove", (event) => {
         if (MouseDown) {
           deleteColorOnCells(event);
