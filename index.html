@@ -28,55 +28,61 @@
     <header>
       <h1>Pimp My Pixel !</h1>
     </header>
-    <div class="palette">
-      <input type="color" value="#22f6f3" class="color-input" />
-      <input type="color" value="#3daf7e" class="color-input" />
-      <input type="color" value="#ffffff" class="color-input" />
-      <input type="color" value="#ec8236" class="color-input" />
-      <input type="color" value="#a9a7ee" class="color-input" />
-      <input type="color" value="#ecc606" class="color-input" />
-      <input type="color" value="#f783f2" class="color-input" />
-      <input type="color" value="#e89e80" class="color-input" />
-      <input type="color" value="#000000" class="color-input" />
-      <input type="color" value="#8b4513" class="color-input" />
-      <input type="color" value="#0000ff" class="color-input" />
-      <input type="color" value="#800080" class="color-input" />
-      <input type="color" value="#ff0000" class="color-input" />
-      <input type="color" value="#ffdead" class="color-input" />
-      <input type="color" value="#808080" class="color-input" />
-      <input type="color" value="#ff6347" class="color-input" />
-    </div>
+
     <main>
       <div class="container">
-        <div class="btn-container">
-          <div class="grid-select-group">
-            <label for="grid-size">Choisir la taille de la grille :</label>
-            <select id="grid-size">
-              <option value="10">10x10</option>
-              <option value="20">20x20</option>
-              <option value="40">40x40</option>
-              <option value="80">80x80</option>
-            </select>
-          </div>
-
-          <button class="generate-grid-btn js-generate-grid">
-            Générer la grille
-          </button>
-
-          <div class="paint-buttons-section">
-            <button class="brush-btn">
-              <img src="./assets/img/paint-brush.png" alt="pinceau" />
-            </button>
-            <button class="eraser-btn">
-              <img src="./assets/img/eraser.png" alt="gomme" />
-            </button>
-            <button class="glitch-btn">Glitch !</button>
-          </div>
-
-          <button class="clear-btn">Clear</button>
+        <div class="palette">
+          <input type="color" value="#22f6f3" class="color-input" />
+          <input type="color" value="#3daf7e" class="color-input" />
+          <input type="color" value="#ffffff" class="color-input" />
+          <input type="color" value="#ec8236" class="color-input" />
+          <input type="color" value="#a9a7ee" class="color-input" />
+          <input type="color" value="#ecc606" class="color-input" />
+          <input type="color" value="#f783f2" class="color-input" />
+          <input type="color" value="#e89e80" class="color-input" />
+          <input type="color" value="#000000" class="color-input" />
+          <input type="color" value="#8b4513" class="color-input" />
+          <input type="color" value="#0000ff" class="color-input" />
+          <input type="color" value="#800080" class="color-input" />
+          <input type="color" value="#ff0000" class="color-input" />
+          <input type="color" value="#ffdead" class="color-input" />
+          <input type="color" value="#808080" class="color-input" />
+          <input type="color" value="#ff6347" class="color-input" />
         </div>
 
-        <div class="board-container"></div>
+        <div class="canvas-panel">
+          <div class="toolbar">
+            <div class="grid-select-group">
+              <label for="grid-size">Choisir la taille de la grille :</label>
+              <select id="grid-size">
+                <option value="10">10x10</option>
+                <option value="20">20x20</option>
+                <option value="40">40x40</option>
+                <option value="80">80x80</option>
+              </select>
+            </div>
+
+            <button class="generate-grid-btn js-generate-grid">
+              Générer la grille
+            </button>
+
+            <div class="paint-buttons-section">
+              <button class="brush-btn">
+                <img src="./assets/img/paint-brush.png" alt="pinceau" />
+              </button>
+              <button class="eraser-btn">
+                <img src="./assets/img/eraser.png" alt="gomme" />
+              </button>
+              <button class="glitch-btn">Glitch !</button>
+            </div>
+
+            <button class="clear-btn">Clear</button>
+          </div>
+
+          <div class="board-container"></div>
+          <div class="spacer-tool"></div>
+          <!-- Div vide pour occuper l'espace restant -->
+        </div>
       </div>
     </main>
 
